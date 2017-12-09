@@ -22,9 +22,75 @@ BankLoger & BankLoger::get()
 	return s;
 }
 
-void cut(std::string * to_cut, const std::string sort) {}//TODO: redundant
+void cut(std::string * to_cut, const std::string sort) {
+	std::string a = "<" + sort + ">";
+	std::string b = "</" + sort + ">";
+	if (to_cut->find(a) < to_cut->size())
+		to_cut->assign(to_cut->substr(to_cut->find(a) + a.size(), to_cut->size()));
+	if (to_cut->find(b) < to_cut->size())
+		to_cut->assign(to_cut->substr(0, to_cut->find(b)));
+}
 
-void loadPerson(std::vector<std::string> * data) {}//TODO:
+void loadPerson(std::vector<std::string> * data) {
+	size_t password;
+	std::string ps_password;
+	int funds;
+	std::string name;
+	std::string surname;
+	size_t birth_date;
+	DataBase::_data_acess_type acess;
+	bool get_password = false;
+	bool get_ps_password = false;
+	bool get_funds = false;
+	bool get_name = false;
+	bool get_surname = false;
+	bool get_birth_date = false;
+	bool get_acess = false;
+
+	for (size_t i = 1; i < data->size(); i++) {
+		if (data->at(i).find("<password_hash>") < data->at(i).size()) {
+			cut(&data->at(i), "password_hash");
+			password = atoi(data->at(i).c_str());
+			get_password = true;
+		}
+		if (data->at(i).find("<password_ps>") < data->at(i).size()) {
+			cut(&data->at(i), "password_ps");
+			ps_password.assign(data->at(i));
+			get_ps_password = true;
+		}
+		if (data->at(i).find("<funds>") < data->at(i).size()) {
+			cut(&data->at(i), "funds");
+			funds = atoi(data->at(i).c_str());
+			get_funds = true;
+		}
+		if (data->at(i).find("<name>") < data->at(i).size()) {
+			cut(&data->at(i), "name");
+			name.assign(data->at(i));
+			get_name = true;
+		}
+		if (data->at(i).find("<surname>") < data->at(i).size()) {
+			cut(&data->at(i), "surname");
+			surname.assign(data->at(i));
+			get_surname = true;
+		}
+		if (data->at(i).find("<birthdate>") < data->at(i).size()) {
+			cut(&data->at(i), "birthdate");
+			birth_date = atoi(data->at(i).c_str());
+			get_birth_date = true;
+		}
+		if (data->at(i).find("<acess>") < data->at(i).size()) {
+			cut(&data->at(i), "acess");
+			if (data->at(i).find("CLIENT") < data->at(i).size())
+				acess = DataBase::CLIENT;
+			if (data->at(i).find("ADMIN") < data->at(i).size())
+				acess = DataBase::ADMIN;
+			get_acess = true;
+		}
+	}
+	if (get_password && get_ps_password && get_funds && get_name && get_surname && get_birth_date && get_acess) {
+		DataBase::get().addDataFromFile(new DataBase::_data(password, ps_password, funds, name, surname, birth_date, acess));
+	}
+}
 
 void loadOperation(std::vector<std::string> * data) {
 	size_t id_from;
@@ -62,11 +128,12 @@ void loadOperation(std::vector<std::string> * data) {
 				type = OperationBase::LOAN;
 			if (data->at(i).find("INVESTMENT") < data->at(i).size())
 				type = OperationBase::INVESTMENT;
-			get_funds = true;
+			get_type = true;
 		}
 	}
-	if (get_id_from && get_id_to && get_funds && get_type)
-		OperationBase::get().addData(new OperationBase::_data(id_from, id_to, funds, type));
+	if (get_id_from && get_id_to && get_funds && get_type) {
+		OperationBase::get().addDataFromFile(new OperationBase::_data(id_from, id_to, funds, type));
+	}
 }
 
 void BankLoger::loadData(std::string input_file, std::string output_data)
@@ -84,6 +151,7 @@ void BankLoger::loadData(std::string input_file, std::string output_data)
 	bool gathering_o = false;
 	while (!f_in.eof()) {
 		std::getline(f_in, temp);
+		f_out << temp << std::endl;
 		if (temp.find("<person>") < temp.size()) {
 			gathering_p = true;
 		}

@@ -30,6 +30,7 @@ public:
 	static OperationBase & get();
 
 	void addData(_data * d);
+	void addDataFromFile(_data * d);
 
 	size_t getIDFrom(size_t element);
 	size_t getIDTo(size_t element);
@@ -37,5 +38,6 @@ public:
 	_data_operation_type getType(size_t element);
 	bool isType(size_t element, _data_operation_type type);
 
+	std::vector<std::string> printXML(_data * d);
 };
 
