@@ -3,6 +3,7 @@
 
 class OperationBase
 {
+public:
 	enum _data_operation_type {NONE, TRANSFER, CHECK, LOAN, INVESTMENT};
 
 	class _data {
@@ -13,9 +14,9 @@ class OperationBase
 		_data_operation_type acess;
 
 		_data(size_t t_id_from, size_t t_id_to, int t_funds, _data_operation_type t_type) :
-			funds(t_funds),
 			id_from(t_id_from),
 			id_to(t_id_to),
+			funds(t_funds),
 			acess(t_type){}
 	};
 private:

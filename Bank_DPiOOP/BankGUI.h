@@ -1,6 +1,8 @@
 #pragma once
 #include "Person.h"
 
+class BankGUI;
+
 class GUIVisitor {
 public:
 	GUIVisitor();

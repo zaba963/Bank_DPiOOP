@@ -1,0 +1,18 @@
+<person>
+	<password_hash>   </password_hash>
+	<password_ps>   </password_hash_ps>
+	<funds>  </funds>
+	<name> </name>
+	<surname>  </surname>
+	<birth_date>  </birth_date>
+	<acess>  </acess>
+</person>
+
+
+
+<operation>
+	<id_from>10</id_from>
+	<id_to>11</id_to>
+	<funds>300</funds>
+	<type>TRANSFER</type>
+</operation>
