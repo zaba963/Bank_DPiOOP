@@ -146,6 +146,7 @@
   <ItemGroup>
     <ClInclude Include="BankGUI.h" />
     <ClInclude Include="BankLoger.h" />
+    <ClInclude Include="BankMainFrame.h" />
     <ClInclude Include="DataBase.h" />
     <ClInclude Include="OperationBase.h" />
     <ClInclude Include="Person.h" />
@@ -155,6 +156,7 @@
   <ItemGroup>
     <ClCompile Include="BankGUI.cpp" />
     <ClCompile Include="BankLoger.cpp" />
+    <ClCompile Include="BankMainFrame.cpp" />
     <ClCompile Include="Bank_DPiOOP.cpp" />
     <ClCompile Include="DataBase.cpp" />
     <ClCompile Include="OperationBase.cpp" />
