@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include <vector>
 #include "Person.h"
 
@@ -9,7 +10,8 @@ public:
 	GUIVisitor();
 	~GUIVisitor();
 
-	static void visit(BankGUI * g, Person *p);
+	void visit(BankGUI * g, Person *p);
+	void printMenu(BankGUI * g);
 };
 
 class BankGUI
@@ -27,6 +29,15 @@ public:
 
 	void addMainMenuElement(GUIVisitor * cons);
 	void addLoginMenuElemnt(GUIVisitor * cons);
+
+	void clearGUI();
+	void print(std::string str);
+	void println(std::string str = "");
+	size_t getID();
+	std::string getLineString();
+
+	void printMainMenu();
+	void printLoginMenu();
 };
 
 class GUILogin : public GUIVisitor {
@@ -35,6 +46,7 @@ public:
 	~GUILogin();
 
 	static void visit(BankGUI * g, Person *p);
+	void printMenu(BankGUI * g);
 };
 
 class GUIMoveTime : public GUIVisitor {
@@ -43,4 +55,5 @@ public:
 	~GUIMoveTime();
 
 	static void visit(BankGUI * g, Person *p);
+	void printMenu(BankGUI * g);
 };

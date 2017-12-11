@@ -74,6 +74,13 @@ bool DataBase::isDataAcessType(size_t id, _data_acess_type type)
 	return false;
 }
 
+Person * DataBase::getClient(size_t id)
+{
+	//TODO:
+	//call clients factory to return corect client and preper his acaunt data
+	return nullptr;
+}
+
 std::vector<std::string> DataBase::printXML(_data * d)
 {
 	std::vector<std::string> temp;

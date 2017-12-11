@@ -8,7 +8,7 @@ class BankMainFrame
 	~BankMainFrame();
 
 	size_t bank_time;
-	Person * curentClient;
+	Person * curent_client;
 
 public:
 	static BankMainFrame & get();
@@ -16,6 +16,7 @@ public:
 	void startBank();
 
 	Person * getCurentClient();
+	void setCurentClient(Person * c);
 	size_t getCurentTime();
 	void passTime(size_t t_time);
 };

@@ -25,7 +25,12 @@ void BankMainFrame::startBank()
 
 Person * BankMainFrame::getCurentClient()
 {
-	return curentClient;
+	return curent_client;
+}
+
+void BankMainFrame::setCurentClient(Person * c)
+{
+	curent_client = c;
 }
 
 size_t BankMainFrame::getCurentTime()

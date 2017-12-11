@@ -4,6 +4,8 @@
 #include <map>
 #include <vector>
 
+#include "Person.h"
+
 const size_t password_size = 128;
 
 class DataBase
@@ -72,6 +74,7 @@ public:
 	std::string getSurname(size_t id);
 	size_t getBirthDate(size_t id);
 	bool isDataAcessType(size_t id, _data_acess_type type);
+	Person * getClient(size_t id);
 
 	std::vector<std::string> printXML(_data * d);
 };
