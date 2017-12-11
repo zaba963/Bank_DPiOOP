@@ -18,15 +18,15 @@ class BankGUI
 	BankGUI(BankGUI &);
 	~BankGUI();
 
-	std::vector<void (*)(GUIVisitor &v, Person *p)> main_menu;
-	std::vector<void(*)(GUIVisitor &v, Person *p)> login_menu;
+	std::vector<GUIVisitor*> main_menu;
+	std::vector<GUIVisitor*> login_menu;
 public:
 	static BankGUI & get();
 
 	void accept(GUIVisitor &v, Person *p);
 
-	void addMainMenuElement(void (*cons)(GUIVisitor &v, Person *p));
-	void addLoginMenuElemnt(void(*cons)(GUIVisitor &v, Person *p));
+	void addMainMenuElement(GUIVisitor * cons);
+	void addLoginMenuElemnt(GUIVisitor * cons);
 };
 
 class GUILogin : public GUIVisitor {

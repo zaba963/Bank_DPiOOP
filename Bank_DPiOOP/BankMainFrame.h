@@ -1,4 +1,6 @@
 #pragma once
+#include "Person.h"
+
 class BankMainFrame
 {
 	BankMainFrame();
@@ -6,10 +8,15 @@ class BankMainFrame
 	~BankMainFrame();
 
 	size_t bank_time;
+	Person * curentClient;
 
 public:
-	BankMainFrame & get();
+	static BankMainFrame & get();
 
 	void startBank();
+
+	Person * getCurentClient();
+	size_t getCurentTime();
+	void passTime(size_t t_time);
 };
 

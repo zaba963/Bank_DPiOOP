@@ -20,12 +20,12 @@ void BankGUI::accept(GUIVisitor & v, Person * p)
 	v.visit(this, p);
 }
 
-void BankGUI::addMainMenuElement(void(*cons)(GUIVisitor & v, Person *p))
+void BankGUI::addMainMenuElement(GUIVisitor * cons)
 {
 	main_menu.push_back(cons);
 }
 
-void BankGUI::addLoginMenuElemnt(void(*cons)(GUIVisitor &v, Person *p))
+void BankGUI::addLoginMenuElemnt(GUIVisitor * cons)
 {
 	login_menu.push_back(cons);
 }
