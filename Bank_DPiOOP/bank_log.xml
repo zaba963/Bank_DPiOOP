@@ -27,3 +27,9 @@
 	<acess>CLIENT</acess>
 </person>
 
+<operation>
+<id_from>0</id_from>
+<id_to>1</id_to>
+<funds>100</funds>
+<type>TRANSFER</type>
+</operation>

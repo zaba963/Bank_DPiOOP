@@ -58,10 +58,10 @@ private:
 	DataBase(DataBase &);
 	~DataBase();
 
-	std::map<size_t, _data* > base;
 	static size_t cur_id;
 public:
 
+	std::map<size_t, _data* > base;
 	static DataBase & get();
 
 	void addData(_data * d);

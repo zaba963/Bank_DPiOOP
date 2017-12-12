@@ -94,7 +94,7 @@ void BankGUI::printMainMenu()
 	int temp;
 	do{
 		clearGUI();
-		this->println("Main menu");
+		this->println("Log menu");
 		this->println();
 		for (size_t i = 0; i < main_menu.size(); i++) {
 			if (GUI_posytion == i) {
@@ -108,6 +108,8 @@ void BankGUI::printMainMenu()
 		temp = getInputToGUI();
 		if (temp >= main_menu.size() && temp >= 0)
 			temp = main_menu.size() - 1;
+		if (GUI_posytion >= login_menu.size())
+			GUI_posytion == login_menu.size() - 1;
 	}
 	while (temp >= 0);
 	main_menu[GUI_posytion]->visit(this, nullptr);
@@ -116,11 +118,11 @@ void BankGUI::printMainMenu()
 void BankGUI::printLoginMenu()
 {
 	GUI_posytion = 0;
-	this->println("Main menu");
-	this->println();
 	int temp;
 	do{
 		clearGUI();
+		this->println("Main menu");
+		this->println();
 		for (size_t i = 0; i < login_menu.size(); i++) {
 			if (GUI_posytion == i) {
 				std::cout << "> ";
@@ -133,9 +135,11 @@ void BankGUI::printLoginMenu()
 		temp = getInputToGUI();
 		if (temp >= login_menu.size() && temp >= 0)
 			temp = login_menu.size() - 1;
+		if (GUI_posytion >= login_menu.size())
+			GUI_posytion == login_menu.size() - 1;
 	}
 	while (temp >= 0);
-	login_menu[GUI_posytion]->visit(this, nullptr);
+	login_menu[GUI_posytion]->visit(this, BankMainFrame::get().getCurentClient());
 }
 
 int BankGUI::getInputToGUI()

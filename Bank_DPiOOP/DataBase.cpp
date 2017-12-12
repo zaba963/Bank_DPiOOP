@@ -59,12 +59,12 @@ int DataBase::getFunds(size_t id)
 
 void DataBase::addFunds(size_t id, int t_funds)
 {
-	base[id]->funds += t_funds;
+	base[id]->funds = base[id]->funds + t_funds;
 }
 
 void DataBase::subFunds(size_t id, int t_funds)
 {
-	base[id]->funds -= t_funds;
+	base[id]->funds = base[id]->funds - t_funds;
 }
 
 std::string DataBase::getName(size_t id)

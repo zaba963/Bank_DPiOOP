@@ -32,6 +32,7 @@ public:
 	void addData(_data * d);
 	void addDataFromFile(_data * d);
 
+	size_t getSize();
 	size_t getIDFrom(size_t element);
 	size_t getIDTo(size_t element);
 	int getFunds(size_t element);

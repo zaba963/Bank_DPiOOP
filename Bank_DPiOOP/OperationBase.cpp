@@ -29,6 +29,11 @@ void OperationBase::addDataFromFile(_data * d)
 	base.push_back(d);
 }
 
+size_t OperationBase::getSize()
+{
+	return base.size();
+}
+
 size_t OperationBase::getIDFrom(size_t element)
 {
 	if (element < base.size())
