@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include <iostream>
 #include <string>
+#include <cstdio>
+#include <conio.h>
 
 #include "BankGUI.h"
 #include "DataBase.h"
@@ -37,7 +39,7 @@ void BankGUI::addLoginMenuElemnt(GUIVisitor * cons)
 
 void BankGUI::clearGUI()
 {
-	system("clc");
+	system("cls");
 }
 
 void BankGUI::print(std::string str)
@@ -64,22 +66,102 @@ std::string BankGUI::getLineString()
 	return temp;
 }
 
+void BankGUI::startGUI()
+{
+	menu_layer = 0;
+	while (true) {
+		switch (menu_layer)
+		{
+		case 0:
+			printMainMenu();
+			break;
+		case 1:
+			printLoginMenu();
+			break;
+		default:
+			break;
+		}
+	}
+}
+
 void BankGUI::printMainMenu()
 {
-	this->println("Main menu");
-	this->println();
-	for (size_t i = 0; i < main_menu.size(); i++)
-		main_menu[i]->printMenu(this);
-	//TODO : add cursor and way to interact
+	GUI_posytion = 0;
+	int temp;
+	do{
+		clearGUI();
+		this->println("Main menu");
+		this->println();
+		for (size_t i = 0; i < main_menu.size(); i++) {
+			if (GUI_posytion == i) {
+				std::cout << "> ";
+			}
+			else {
+				std::cout << "  ";
+			}
+			main_menu[i]->printMenu(this);
+		}
+		temp = getInputToGUI();
+		if (temp >= main_menu.size() && temp >= 0)
+			temp = main_menu.size() - 1;
+	}
+	while (temp >= 0);
+	main_menu[GUI_posytion]->visit(this, nullptr);
 }
 
 void BankGUI::printLoginMenu()
 {
+	GUI_posytion = 0;
 	this->println("Main menu");
 	this->println();
-	for (size_t i = 0; i < login_menu.size(); i++)
-		login_menu[i]->printMenu(this);
-	//TODO : add cursor and way to interact
+	int temp;
+	do{
+		for (size_t i = 0; i < login_menu.size(); i++) {
+			if (GUI_posytion == i) {
+				std::cout << "> ";
+			}
+			else {
+				std::cout << "  ";
+			}
+			login_menu[i]->printMenu(this);
+		}
+		temp = getInputToGUI();
+		if (temp >= login_menu.size())
+			temp = login_menu.size() - 1;
+		if (temp >= 0)
+			GUI_posytion = temp;
+	}
+	while (temp >= 0);
+	login_menu[GUI_posytion]->visit(this, nullptr);
+}
+
+int BankGUI::getInputToGUI()
+{
+	bool done = false;
+	do {
+		//char t = std::cin.get();
+		char t = _getch();
+		if (t == 's') {
+			done = true;
+			GUI_posytion++;
+			return GUI_posytion;
+		}
+		if (t == 'w') {
+			done = true;
+			if (GUI_posytion == 0) {
+				GUI_posytion = 0;
+			}
+			else {
+				GUI_posytion--; 
+			}
+			return GUI_posytion;
+		}
+		if (t == '\r') {
+			done = true;
+			return -1;
+		}
+	} while (!done);
+	return -1;
 }
 
 GUIVisitor::GUIVisitor()
@@ -89,10 +171,6 @@ GUIVisitor::GUIVisitor()
 GUIVisitor::~GUIVisitor()
 {
 }
-
-void GUIVisitor::visit(BankGUI * g, Person * p){}
-
-void GUIVisitor::printMenu(BankGUI * g){}
 
 GUILogin::GUILogin()
 {
@@ -116,8 +194,10 @@ void GUILogin::visit(BankGUI * g, Person * p)
 		std::string t_pass = g->getLineString();
 		corect = DataBase::get().isPassword(t_id, t_pass);
 	} while (!corect);
-	if (corect)
+	if (corect) {
 		BankMainFrame::get().setCurentClient(DataBase::get().getClient(t_id));
+		g->menu_layer++;
+	}
 }
 
 void GUILogin::printMenu(BankGUI * g)

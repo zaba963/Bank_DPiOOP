@@ -10,8 +10,9 @@ public:
 	GUIVisitor();
 	~GUIVisitor();
 
-	void visit(BankGUI * g, Person *p);
-	void printMenu(BankGUI * g);
+	virtual void visit(BankGUI * g, Person *p) = 0;
+	virtual void printMenu(BankGUI * g) = 0;
+
 };
 
 class BankGUI
@@ -22,7 +23,11 @@ class BankGUI
 
 	std::vector<GUIVisitor*> main_menu;
 	std::vector<GUIVisitor*> login_menu;
+
+	int GUI_posytion;
 public:
+	int menu_layer;
+
 	static BankGUI & get();
 
 	void accept(GUIVisitor &v, Person *p);
@@ -36,8 +41,11 @@ public:
 	size_t getID();
 	std::string getLineString();
 
+	void startGUI();
 	void printMainMenu();
 	void printLoginMenu();
+
+	int getInputToGUI();
 };
 
 class GUILogin : public GUIVisitor {
@@ -45,7 +53,7 @@ public:
 	GUILogin();
 	~GUILogin();
 
-	static void visit(BankGUI * g, Person *p);
+	void visit(BankGUI * g, Person *p);
 	void printMenu(BankGUI * g);
 };
 
@@ -54,6 +62,6 @@ public:
 	GUIMoveTime();
 	~GUIMoveTime();
 
-	static void visit(BankGUI * g, Person *p);
+	void visit(BankGUI * g, Person *p);
 	void printMenu(BankGUI * g);
 };

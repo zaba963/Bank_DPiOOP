@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "BankMainFrame.h"
+#include "BankGUI.h"
 
 
 BankMainFrame::BankMainFrame()
@@ -20,7 +21,7 @@ BankMainFrame & BankMainFrame::get()
 
 void BankMainFrame::startBank()
 {
-	//TODO: Bank start
+	BankGUI::get().startGUI();
 }
 
 Person * BankMainFrame::getCurentClient()

@@ -11,7 +11,7 @@ const size_t password_size = 128;
 class DataBase
 {
 public:
-	enum _data_acess_type {CLIENT, ADMIN};
+	enum _data_acess_type {ADMIN, FIRM, STUDENT, WORKER};
 
 	class _data {
 	public:
