@@ -7,6 +7,7 @@
 #include "BankGUI.h"
 #include "DataBase.h"
 #include "BankMainFrame.h"
+#include "OperationBase.h"
 
 BankGUI::BankGUI(){}
 
@@ -51,6 +52,13 @@ void BankGUI::println(std::string str)
 size_t BankGUI::getID()
 {
 	size_t temp;
+	std::cin >> temp;
+	return temp;
+}
+
+int BankGUI::getInt()
+{
+	int temp;
 	std::cin >> temp;
 	return temp;
 }
@@ -112,6 +120,7 @@ void BankGUI::printLoginMenu()
 	this->println();
 	int temp;
 	do{
+		clearGUI();
 		for (size_t i = 0; i < login_menu.size(); i++) {
 			if (GUI_posytion == i) {
 				std::cout << "> ";
@@ -122,10 +131,8 @@ void BankGUI::printLoginMenu()
 			login_menu[i]->printMenu(this);
 		}
 		temp = getInputToGUI();
-		if (temp >= login_menu.size())
+		if (temp >= login_menu.size() && temp >= 0)
 			temp = login_menu.size() - 1;
-		if (temp >= 0)
-			GUI_posytion = temp;
 	}
 	while (temp >= 0);
 	login_menu[GUI_posytion]->visit(this, nullptr);
@@ -135,7 +142,6 @@ int BankGUI::getInputToGUI()
 {
 	bool done = false;
 	do {
-		//char t = std::cin.get();
 		char t = _getch();
 		if (t == 's') {
 			done = true;
@@ -216,7 +222,10 @@ GUIHistory::~GUIHistory(){}
 
 void GUIHistory::visit(BankGUI * g, Person * p)
 {
-	//TODO:
+	g->clearGUI();
+	g->println("History");
+	g->println("");
+	p->printHistory();
 }
 
 void GUIHistory::printMenu(BankGUI * g)
@@ -230,10 +239,17 @@ GUITransfer::~GUITransfer(){}
 
 void GUITransfer::visit(BankGUI * g, Person * p)
 {
-	//TODO:
-	//register transfet
-	//check transfer
-	//return to main menu'
+	g->clearGUI();
+	g->println("Transfer to - client id");
+	size_t temp = g->getID();
+	g->println("Amaunt");
+	int t_a = g->getInt();
+	if(t_a > 0)
+	if (DataBase::get().egzistPerson(temp)) {
+		DataBase::get().subFunds(p->getId(), t_a);
+		DataBase::get().addFunds(temp, t_a);
+		OperationBase::get().addData(new OperationBase::_data(p->getId(), temp, t_a, OperationBase::TRANSFER));
+	}
 }
 
 void GUITransfer::printMenu(BankGUI * g)
@@ -247,7 +263,7 @@ GUILogout::~GUILogout(){}
 
 void GUILogout::visit(BankGUI * g, Person * p)
 {
-	BankMainFrame::get().setCurentClient(new Person());
+	BankMainFrame::get().setCurentClient(new Civilian());
 	g->menu_layer = 0;
 }
 

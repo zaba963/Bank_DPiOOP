@@ -23,7 +23,7 @@ public:
 		size_t birth_date;
 		_data_acess_type acess;
 
-		_data(std::string t_password, int t_funds, std::string t_name, std::string t_surname, size_t t_birth_date, _data_acess_type t_acess = CLIENT) :
+		_data(std::string t_password, int t_funds, std::string t_name, std::string t_surname, size_t t_birth_date, _data_acess_type t_acess = STUDENT) :
 			funds(t_funds),
 			name(t_name),
 			surname(t_surname),
@@ -43,7 +43,7 @@ public:
 			password = std::hash<std::string>{}(t_password);
 		}
 
-		_data(size_t t_password, std::string t_ps_password, int t_funds, std::string t_name, std::string t_surname, size_t t_birth_date, _data_acess_type t_acess = CLIENT) :
+		_data(size_t t_password, std::string t_ps_password, int t_funds, std::string t_name, std::string t_surname, size_t t_birth_date, _data_acess_type t_acess = STUDENT) :
 			password(t_password),
 			ps_password(t_ps_password),
 			funds(t_funds),
@@ -69,7 +69,10 @@ public:
 
 	size_t getHashPassword(size_t id);
 	bool isPassword(size_t id, std::string pas);
+	bool egzistPerson(size_t id);
 	int getFunds(size_t id);
+	void addFunds(size_t id, int t_funds);
+	void subFunds(size_t id, int t_funds);
 	std::string getName(size_t id);
 	std::string getSurname(size_t id);
 	size_t getBirthDate(size_t id);

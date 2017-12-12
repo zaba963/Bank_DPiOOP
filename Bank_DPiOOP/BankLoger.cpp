@@ -38,7 +38,7 @@ void loadPerson(std::vector<std::string> * data) {
 	std::string name;
 	std::string surname;
 	size_t birth_date;
-	DataBase::_data_acess_type acess;
+	DataBase::_data_acess_type acess = DataBase::STUDENT;
 	bool get_password = false;
 	bool get_ps_password = false;
 	bool get_funds = false;

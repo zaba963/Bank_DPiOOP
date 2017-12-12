@@ -39,6 +39,7 @@ public:
 	void print(std::string str);
 	void println(std::string str = "");
 	size_t getID();
+	int getInt();
 	std::string getLineString();
 
 	void startGUI();

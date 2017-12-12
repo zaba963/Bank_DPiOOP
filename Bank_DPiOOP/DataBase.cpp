@@ -47,9 +47,24 @@ bool DataBase::isPassword(size_t id, std::string pas)
 	return false;
 }
 
+bool DataBase::egzistPerson(size_t id)
+{
+	return base.count(id) > 0;
+}
+
 int DataBase::getFunds(size_t id)
 {
 	return base[id]->funds;
+}
+
+void DataBase::addFunds(size_t id, int t_funds)
+{
+	base[id]->funds += t_funds;
+}
+
+void DataBase::subFunds(size_t id, int t_funds)
+{
+	base[id]->funds -= t_funds;
 }
 
 std::string DataBase::getName(size_t id)
