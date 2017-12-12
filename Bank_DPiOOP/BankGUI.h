@@ -33,7 +33,7 @@ public:
 	void accept(GUIVisitor &v, Person *p);
 
 	void addMainMenuElement(GUIVisitor * cons);
-	void addLoginMenuElemnt(GUIVisitor * cons);
+	void addLoginMenuElement(GUIVisitor * cons);
 
 	void clearGUI();
 	void print(std::string str);
@@ -61,6 +61,33 @@ class GUIMoveTime : public GUIVisitor {
 public:
 	GUIMoveTime();
 	~GUIMoveTime();
+
+	void visit(BankGUI * g, Person *p);
+	void printMenu(BankGUI * g);
+};
+
+class GUIHistory : public GUIVisitor {
+public:
+	GUIHistory();
+	~GUIHistory();
+
+	void visit(BankGUI * g, Person *p);
+	void printMenu(BankGUI * g);
+};
+
+class GUITransfer : public GUIVisitor {
+public:
+	GUITransfer();
+	~GUITransfer();
+
+	void visit(BankGUI * g, Person *p);
+	void printMenu(BankGUI * g);
+};
+
+class GUILogout : public GUIVisitor {
+public:
+	GUILogout();
+	~GUILogout();
 
 	void visit(BankGUI * g, Person *p);
 	void printMenu(BankGUI * g);

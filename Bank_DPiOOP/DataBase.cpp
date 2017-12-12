@@ -76,9 +76,7 @@ bool DataBase::isDataAcessType(size_t id, _data_acess_type type)
 
 Person * DataBase::getClient(size_t id)
 {
-	//TODO:
-	//call clients factory to return corect client and preper his acaunt data
-	return nullptr;
+	return PersonFactory::getNewPerson(id);
 }
 
 std::vector<std::string> DataBase::printXML(_data * d)
@@ -91,8 +89,12 @@ std::vector<std::string> DataBase::printXML(_data * d)
 	temp.push_back("\t<name>" + d->name + "</name>");
 	temp.push_back("\t<surname>" + d->surname + "</surname>");
 	temp.push_back("\t<birthdate>" + std::to_string(d->birth_date) + "</birthdate>");
-	if(d->acess == CLIENT)
-		temp.push_back("\t<acess>CLIENT</acess>");
+	if(d->acess == FIRM)
+		temp.push_back("\t<acess>FIRM</acess>");
+	if (d->acess == STUDENT)
+		temp.push_back("\t<acess>STUDENT</acess>");
+	if (d->acess == WORKER)
+		temp.push_back("\t<acess>WORKER</acess>");
 	if (d->acess == ADMIN)
 		temp.push_back("\t<acess>ADMIN</acess>");
 	temp.push_back("</person>");

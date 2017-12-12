@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GUIVisitor" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAEgAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>BankGUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BankGUI" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAAAmIAAAAEACBABAAQIAAAAAIAAAAADIQAAIAAAA=</HashCode>
+      <FileName>BankGUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUILogin" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>BankGUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUIMoveTime" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>BankGUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BankLoger" Collapsed="true">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAABAAAAAAAAAAAAAAQAAAAAAAABAABgAAAAAAAAA=</HashCode>
+      <FileName>BankLoger.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BankMainFrame" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAgAAAAAAAAAAAAQAAAABAAAAGAAAAaAIAAAAA=</HashCode>
+      <FileName>BankMainFrame.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataBase" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEBAgAAECEAAAAAABAABQAAAAEAAAAQAAABEAAQAAYA=</HashCode>
+      <FileName>DataBase.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OperationBase" Collapsed="true">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABBiAAEAAAAAAAAAAAAQAAAAUAAAAAAAAAAAQAACIE=</HashCode>
+      <FileName>OperationBase.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Person" Collapsed="true">
+    <Position X="6.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Person.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Admin" Collapsed="true">
+    <Position X="3.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Person.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="User" Collapsed="true">
+    <Position X="7.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Person.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Firm" Collapsed="true">
+    <Position X="5.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Person.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Civilian" Collapsed="true">
+    <Position X="8.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Person.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Student" Collapsed="true">
+    <Position X="10" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Person.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Worker" Collapsed="true">
+    <Position X="7.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Person.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

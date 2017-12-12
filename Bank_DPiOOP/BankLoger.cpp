@@ -80,8 +80,12 @@ void loadPerson(std::vector<std::string> * data) {
 		}
 		if (data->at(i).find("<acess>") < data->at(i).size()) {
 			cut(&data->at(i), "acess");
-			if (data->at(i).find("CLIENT") < data->at(i).size())
-				acess = DataBase::CLIENT;
+			if (data->at(i).find("FIRM") < data->at(i).size())
+				acess = DataBase::FIRM;
+			if (data->at(i).find("STUDENT") < data->at(i).size())
+				acess = DataBase::STUDENT;
+			if (data->at(i).find("WORKER") < data->at(i).size())
+				acess = DataBase::WORKER;
 			if (data->at(i).find("ADMIN") < data->at(i).size())
 				acess = DataBase::ADMIN;
 			get_acess = true;

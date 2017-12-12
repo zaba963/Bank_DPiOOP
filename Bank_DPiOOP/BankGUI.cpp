@@ -8,13 +8,9 @@
 #include "DataBase.h"
 #include "BankMainFrame.h"
 
-BankGUI::BankGUI()
-{
-}
+BankGUI::BankGUI(){}
 
-BankGUI::~BankGUI()
-{
-}
+BankGUI::~BankGUI(){}
 
 BankGUI & BankGUI::get()
 {
@@ -32,7 +28,7 @@ void BankGUI::addMainMenuElement(GUIVisitor * cons)
 	main_menu.push_back(cons);
 }
 
-void BankGUI::addLoginMenuElemnt(GUIVisitor * cons)
+void BankGUI::addLoginMenuElement(GUIVisitor * cons)
 {
 	login_menu.push_back(cons);
 }
@@ -164,21 +160,13 @@ int BankGUI::getInputToGUI()
 	return -1;
 }
 
-GUIVisitor::GUIVisitor()
-{
-}
+GUIVisitor::GUIVisitor(){}
 
-GUIVisitor::~GUIVisitor()
-{
-}
+GUIVisitor::~GUIVisitor(){}
 
-GUILogin::GUILogin()
-{
-}
+GUILogin::GUILogin(){}
 
-GUILogin::~GUILogin()
-{
-}
+GUILogin::~GUILogin(){}
 
 void GUILogin::visit(BankGUI * g, Person * p)
 {
@@ -205,13 +193,9 @@ void GUILogin::printMenu(BankGUI * g)
 	g->println("Loginn to your acaunt");
 }
 
-GUIMoveTime::GUIMoveTime()
-{
-}
+GUIMoveTime::GUIMoveTime(){}
 
-GUIMoveTime::~GUIMoveTime()
-{
-}
+GUIMoveTime::~GUIMoveTime(){}
 
 void GUIMoveTime::visit(BankGUI * g, Person * p)
 {
@@ -224,4 +208,50 @@ void GUIMoveTime::visit(BankGUI * g, Person * p)
 void GUIMoveTime::printMenu(BankGUI * g)
 {
 	g->println("Time passing operation");
+}
+
+GUIHistory::GUIHistory(){}
+
+GUIHistory::~GUIHistory(){}
+
+void GUIHistory::visit(BankGUI * g, Person * p)
+{
+	//TODO:
+}
+
+void GUIHistory::printMenu(BankGUI * g)
+{
+	g->println("History");
+}
+
+GUITransfer::GUITransfer(){}
+
+GUITransfer::~GUITransfer(){}
+
+void GUITransfer::visit(BankGUI * g, Person * p)
+{
+	//TODO:
+	//register transfet
+	//check transfer
+	//return to main menu'
+}
+
+void GUITransfer::printMenu(BankGUI * g)
+{
+	g->println("Transfer");
+}
+
+GUILogout::GUILogout(){}
+
+GUILogout::~GUILogout(){}
+
+void GUILogout::visit(BankGUI * g, Person * p)
+{
+	BankMainFrame::get().setCurentClient(new Person());
+	g->menu_layer = 0;
+}
+
+void GUILogout::printMenu(BankGUI * g)
+{
+	g->println("Logout");
 }

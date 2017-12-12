@@ -17,3 +17,11 @@ class Civilian : public User {};
 class Student : public Civilian {};
 
 class Worker : public Civilian {};
+
+class PersonFactory {
+public:
+	PersonFactory();
+	~PersonFactory();
+
+	static Person * getNewPerson(size_t id);
+};
