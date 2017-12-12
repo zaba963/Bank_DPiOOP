@@ -186,7 +186,7 @@ void GUILogin::visit(BankGUI * g, Person * p)
 	do {
 		if(!corect)
 			g->println("password incorect - try again");
-		g->println("pase id");
+		g->println("pass id");
 		t_id = g->getID();
 		g->println("pass password");
 		std::string t_pass = g->getLineString();
@@ -200,7 +200,7 @@ void GUILogin::visit(BankGUI * g, Person * p)
 
 void GUILogin::printMenu(BankGUI * g)
 {
-	g->println("Loginn to your acaunt");
+	g->println("Login to your account");
 }
 
 GUIMoveTime::GUIMoveTime(){}
@@ -210,7 +210,7 @@ GUIMoveTime::~GUIMoveTime(){}
 void GUIMoveTime::visit(BankGUI * g, Person * p)
 {
 	g->clearGUI();
-	g->println("pass amaunt time to pass");
+	g->println("how much time would you like to pass?");
 	size_t temp = g->getID();
 	BankMainFrame::get().passTime(temp);
 }
@@ -246,7 +246,7 @@ void GUITransfer::visit(BankGUI * g, Person * p)
 	g->clearGUI();
 	g->println("Transfer to - client id");
 	size_t temp = g->getID();
-	g->println("Amaunt");
+	g->println("Amount");
 	int t_a = g->getInt();
 	if(t_a > 0)
 	if (DataBase::get().egzistPerson(temp)) {
